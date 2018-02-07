@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>FRC Dashboard</title>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="timer">2:15</div>
+    <header>
+        <!-- Tells whether robot is connected to dashboard. -->
+        <div id="robot-state">Unknown state</div>
+    </header>
+    <!-- You'll need to mess around with the CSS of #camera (found in css/style.css) to get it to work.
+        More explanation in that CSS rule. -->
+    <div id="camera"></div>
+    <!-- The main body of the dashboard, by default contains the gyro monitor and the robot diagram -->
+    <article>
+        <!-- Gyroscope -->
+        <svg id="gyro">
+            <circle cx="85" cy="85" r="83"></circle>
+            <circle cx="85" cy="85" r="50"></circle>
+            <rect id="gyro-arm" x="80" y="5" width="10" height="80"></rect>
+            <text id="gyro-number" x="90" y="115">0º</text>
+        </svg>
+        <!-- Example robot diagram, lift moves when encoder value changes -->
+        <svg id="robot-diagram" width="332" height="450">
+            <text x="120" y="340">Lift Height</text>
+            <rect x="75" y="360" width="230" height="40"></rect>
+            <rect x="85" y="370" width="210" height="40"></rect>
+            <rect x="80" y="200" width="10" height="200"></rect>
+            <line x1="90" x2="300" y1="200" y2="360"></line>
+            <line x1="90" x2="290" y1="210" y2="360"></line>
+            <rect id="robot-lift" x="5" y="375" width="80" height="10"></rect>
+            <circle cx="100" cy="410" r="25"></circle>
+            <circle cx="185" cy="410" r="25"></circle>
+            <circle cx="270" cy="410" r="25"></circle>
+            <rect x="60" y="380" width="250" height="30"></rect>
+            <text id="team" x="185" y="405" text-anchor="middle">2606</text>
+        </svg>
+    </article>
+    <!-- The sidebar of the dashboard. Designed for smaller control elements like selection boxes and small buttons. -->
+    <aside>
+        <!-- tele selector -->
+        <div class="select-container">
+            <select id="tele-select">
+                <option>No tele modes found</option>
+                <!-- This gets populated by JS -->
+            </select>
+        </div>  
+    </aside>
+    <div id="login">
+        <input id="connect-address" type="text" value="localhost" disabled>
+        <button id="connect" disabled>Connecting</button>
+    </div>
+    <script src="networktables/networktables.js"></script>
+    <script src="connection.js"></script>
+    <script src="ui.js"></script>
+</body>
+
+</html>
